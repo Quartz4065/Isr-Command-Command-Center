@@ -17,17 +17,18 @@
         }
 
         .container {
-            display: grid;
-            grid-template-columns: 1fr repeat(2, minmax(300px, 1fr)) 1fr;
-            gap: 20px;
             max-width: 1200px;
             margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
             padding: 20px;
         }
 
         .header {
             text-align: center;
-            grid-column: 1 / -1;
+            margin-bottom: 20px;
+            width: 100%;
         }
 
         .header img {
@@ -57,6 +58,7 @@
             color: #e0e0e0;
             font-weight: bold;
             text-align: center;
+            display: inline-block;
             box-sizing: border-box;
             transform: scale(1.02);
             transition: background-color 0.3s, transform 0.3s;
@@ -75,8 +77,13 @@
             padding: 10px;
             z-index: 1000;
             cursor: pointer;
-            position: relative;
-            transition: max-height 0.5s ease-out;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        body.active-answer {
             overflow: hidden;
         }
 
@@ -87,7 +94,6 @@
             box-sizing: border-box;
             display: none;
             flex-direction: column;
-            grid-column: 2 / 4;
         }
 
         .script-section {
@@ -129,8 +135,15 @@
             margin: 0 10px;
             padding: 10px;
             border-radius: 5px;
+            width: 48%;
             box-sizing: border-box;
-            grid-column: 2 / 4;
+        }
+
+        .questions-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 100%;
         }
 
         .group-header {
@@ -148,14 +161,13 @@
         .group-general .group-header { color: #00cdac; }
 
         .record-container, .call-notes-container {
-            grid-column: 2 / 4;
+            width: 48%;
         }
 
         .counter-container {
             display: flex;
             justify-content: space-between;
             width: 100%;
-            grid-column: 2 / 4;
         }
 
         .counter {
@@ -193,8 +205,6 @@
             font-size: 16px;
             border-radius: 5px;
             transition: background-color 0.3s, transform 0.3s;
-            grid-column: 2 / 4;
-            justify-self: center;
         }
 
         .toggle-button:hover {
@@ -261,7 +271,6 @@
             background-color: #333;
             padding: 5px;
             border-radius: 5px;
-            z-index: 1000;
         }
 
         .question-box:hover {
@@ -269,50 +278,24 @@
             background-color: #006ed2;
         }
 
-        .sticky-nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #333;
-            color: white;
-            z-index: 1000;
-        }
-        
-        .sticky-nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-        
-        .sticky-nav li {
-            float: left;
-        }
-        
-        .sticky-nav li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-        
-        .sticky-nav li a:hover {
-            background-color: #111;
-        }
-
         @media (max-width: 768px) {
             .container {
-                grid-template-columns: 1fr;
+                flex-direction: column;
             }
 
             .counter-container, .record-container, .call-notes-container {
-                grid-column: span 1;
+                position: static;
                 width: 100%;
                 margin-bottom: 10px;
             }
 
+            .questions-container {
+                flex-direction: column;
+            }
+
             .toggle-button {
+                position: static;
+                margin-bottom: 10px;
                 width: 100%;
                 box-sizing: border-box;
             }
@@ -321,16 +304,6 @@
 </head>
 <body>
     <div id="datetime"></div>
-    <nav class="sticky-nav">
-        <ul>
-            <li><a href="#deposits">Deposits</a></li>
-            <li><a href="#callbacks">Callbacks</a></li>
-            <li><a href="#cost">Cost</a></li>
-            <li><a href="#location">Location</a></li>
-            <li><a href="#medical">Medical</a></li>
-            <li><a href="#general">General Rules</a></li>
-        </ul>
-    </nav>
     <div class="container">
         <div class="header">
             <img src="Nuvia_logo.png" alt="Nuvia Logo">
@@ -465,7 +438,7 @@
             </div>
         </div>
         <div class="questions-container">
-            <div class="group-container group-deposit" id="deposits">
+            <div class="group-container group-deposit">
                 <div class="group-header">Deposits</div>
                 <div class="question-box" onclick="toggleAnswer('answer1')">Deposit Objection - Clarify</div>
                 <div id="answer1" class="answer" onclick="toggleAnswer('answer1')">
@@ -489,7 +462,7 @@
                     <p>“Okay no worries I’m just putting in some notes so you can run and grab that take your time.”</p>
                 </div>
             </div>
-            <div class="group-container group-callback" id="callbacks">
+            <div class="group-container group-callback">
                 <div class="group-header">Callbacks</div>
                 <div class="question-box" onclick="toggleAnswer('answer6')">Call Back - Beginning of the call/Busy (Pre Discovery)</div>
                 <div id="answer6" class="answer" onclick="toggleAnswer('answer6')">
@@ -530,7 +503,7 @@
                     <p>“Hey I know that arranging calendars can be difficult. You mentioned how much this is affecting your life so I want to reserve this voucher for you and I can do that by just putting you on the calendar and if an emergency comes up we are happy to accommodate. So let’s just get you on the calendar and if anything changes we can adjust.”</p>
                 </div>
             </div>
-            <div class="group-container group-cost" id="cost">
+            <div class="group-container group-cost">
                 <div class="group-header">Cost</div>
                 <div class="question-box" onclick="toggleAnswer('answer13')">Beginning of the Call Cost Script</div>
                 <div id="answer13" class="answer" onclick="toggleAnswer('answer13')">
@@ -552,7 +525,7 @@
                     <p>“May I ask what’s holding you back from coming into a complimentary consultation to get the answers you are looking for?” (redirect back to flow)</p>
                 </div>
             </div>
-            <div class="group-container group-location" id="location">
+            <div class="group-container group-location">
                 <div class="group-header">Location</div>
                 <div class="question-box" onclick="toggleAnswer('answer17')">Where are you located?</div>
                 <div id="answer17" class="answer" onclick="toggleAnswer('answer17')">
@@ -569,7 +542,7 @@
                     <p>“We have patients travel in from other states and even other countries and they do this because we eliminate up to 15 appointments and give you your permanent set of teeth in 24 hours. At other implant centers you typically get a temporary denture the day of surgery which are bulky hard to talk with and breaks up to 40% of the time. It’s 100% worth the trip. For patients that live too far to travel for their consultation we set up a virtual consultation and will talk to you more about “potential travel accommodations.”</p>
                 </div>
             </div>
-            <div class="group-container group-medical" id="medical">
+            <div class="group-container group-medical">
                 <div class="group-header">Medical</div>
                 <div class="question-box" onclick="toggleAnswer('answer16')">Does Nuvia take dental insurance? (Insurance Script)</div>
                 <div id="answer16" class="answer" onclick="toggleAnswer('answer16')">
@@ -599,7 +572,7 @@
                     <p>“That’s a great question the clinical team is best qualified to answer that kind of question for you during your consultation.” (Redirect back to flow)</p>
                 </div>
             </div>
-            <div class="group-container group-general" id="general">
+            <div class="group-container group-general">
                 <div class="group-header">General Rules</div>
                 <div class="question-box" onclick="toggleAnswer('answer26')">Red Flags</div>
                 <div id="answer26" class="answer" onclick="toggleAnswer('answer26')">
@@ -647,10 +620,20 @@
     <script>
         function toggleAnswer(id) {
             var answer = document.getElementById(id);
-            if (answer.style.display === "block") {
-                answer.style.display = "none";
-            } else {
+            var questionBox = document.querySelector(".question-box[onclick*='" + id + "']");
+            var answers = document.getElementsByClassName("answer");
+
+            if (answer.style.display === "none" || answer.style.display === "") {
+                for (var i = 0; i < answers.length; i++) {
+                    answers[i].style.display = "none";
+                }
                 answer.style.display = "block";
+                document.body.classList.add("active-answer");
+                questionBox.classList.add("active");
+            } else {
+                answer.style.display = "none";
+                document.body.classList.remove("active-answer");
+                questionBox.classList.remove("active");
             }
         }
 
