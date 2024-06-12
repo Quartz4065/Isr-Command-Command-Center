@@ -17,18 +17,17 @@
         }
 
         .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
             max-width: 1200px;
             margin: auto;
-            display: flex;
-            flex-wrap: wrap;
-            position: relative;
             padding: 20px;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 20px;
-            width: 100%;
+            grid-column: 1 / -1;
         }
 
         .header img {
@@ -58,7 +57,6 @@
             color: #e0e0e0;
             font-weight: bold;
             text-align: center;
-            display: inline-block;
             box-sizing: border-box;
             transform: scale(1.02);
             transition: background-color 0.3s, transform 0.3s;
@@ -71,7 +69,7 @@
         .answer {
             font-weight: bold;
             text-align: center;
-            display: block;
+            display: none;
             background-color: #0000FF;
             border: 1px solid #444;
             padding: 10px;
@@ -118,7 +116,7 @@
         .panel {
             padding: 0 18px;
             background-color: #2c2c2c;
-            display: block;
+            display: none;
             overflow: hidden;
             border-radius: 5px;
             margin-bottom: 10px;
@@ -130,15 +128,7 @@
             margin: 0 10px;
             padding: 10px;
             border-radius: 5px;
-            width: 48%;
             box-sizing: border-box;
-        }
-
-        .questions-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            width: 100%;
         }
 
         .group-header {
@@ -156,13 +146,14 @@
         .group-general .group-header { color: #00cdac; }
 
         .record-container, .call-notes-container {
-            width: 48%;
+            grid-column: span 2;
         }
 
         .counter-container {
             display: flex;
             justify-content: space-between;
             width: 100%;
+            grid-column: span 2;
         }
 
         .counter {
@@ -308,22 +299,16 @@
 
         @media (max-width: 768px) {
             .container {
-                flex-direction: column;
+                grid-template-columns: 1fr;
             }
 
             .counter-container, .record-container, .call-notes-container {
-                position: static;
+                grid-column: span 1;
                 width: 100%;
                 margin-bottom: 10px;
             }
 
-            .questions-container {
-                flex-direction: column;
-            }
-
             .toggle-button {
-                position: static;
-                margin-bottom: 10px;
                 width: 100%;
                 box-sizing: border-box;
             }
@@ -658,7 +643,11 @@
     <script>
         function toggleAnswer(id) {
             var answer = document.getElementById(id);
-            answer.classList.toggle('active');
+            if (answer.style.display === "block") {
+                answer.style.display = "none";
+            } else {
+                answer.style.display = "block";
+            }
         }
 
         function incrementCounter(id) {
