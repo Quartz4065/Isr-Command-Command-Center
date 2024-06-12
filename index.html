@@ -18,7 +18,7 @@
 
         .container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr repeat(2, minmax(300px, 1fr)) 1fr;
             gap: 20px;
             max-width: 1200px;
             margin: auto;
@@ -87,6 +87,7 @@
             box-sizing: border-box;
             display: none;
             flex-direction: column;
+            grid-column: 2 / 4;
         }
 
         .script-section {
@@ -129,6 +130,7 @@
             padding: 10px;
             border-radius: 5px;
             box-sizing: border-box;
+            grid-column: 2 / 4;
         }
 
         .group-header {
@@ -146,14 +148,14 @@
         .group-general .group-header { color: #00cdac; }
 
         .record-container, .call-notes-container {
-            grid-column: span 2;
+            grid-column: 2 / 4;
         }
 
         .counter-container {
             display: flex;
             justify-content: space-between;
             width: 100%;
-            grid-column: span 2;
+            grid-column: 2 / 4;
         }
 
         .counter {
@@ -191,6 +193,8 @@
             font-size: 16px;
             border-radius: 5px;
             transition: background-color 0.3s, transform 0.3s;
+            grid-column: 2 / 4;
+            justify-self: center;
         }
 
         .toggle-button:hover {
