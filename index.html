@@ -86,7 +86,7 @@
             border-radius: 10px;
             width: 100%;
             border: 1px solid #444;
-            padding: 10px;
+            padding: 7.5px; /* Reduced padding by 25% */
             margin: 3px;
             cursor: pointer;
             background-color: var(--question-box-bg);
@@ -97,7 +97,7 @@
             box-sizing: border-box;
             transform: scale(1.02);
             transition: background-color 0.3s, transform 0.3s;
-            font-size: 0.75em; /* Reduced font size */
+            font-size: 0.75em; /* Reduced font size by 25% */
         }
 
         .question-box.active {
@@ -110,14 +110,14 @@
             display: none;
             background-color: var(--answer-bg);
             border: 1px solid #444;
-            padding: 7px;
+            padding: 13px; /* Increased padding by 30% */
             z-index: 1000;
             cursor: pointer;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 0.75em; /* Reduced font size */
+            font-size: 1.3em; /* Increased font size by 30% */
         }
 
         body.active-answer {
@@ -141,7 +141,7 @@
             background-color: var(--accordion-bg);
             color: var(--accordion-color);
             cursor: pointer;
-            padding: 7px;
+            padding: 10px;
             width: 100%;
             text-align: left;
             border: none;
@@ -416,42 +416,6 @@
             <h1>Nuvia ISR Command Center</h1>
         </div>
 
-        <!-- Your existing content -->
-
-        <div class="record-container">
-            <button class="record-button" id="start-recording" style="background-color: #ffffff; color: #000000; border: 1px solid #000000;">Start Recording</button>
-            <button class="record-button" id="stop-recording" disabled style="background-color: #ffffff; color: #000000; border: 1px solid #000000;">Stop Recording</button>
-            <button class="record-button" id="save-recording" disabled style="background-color: #ffffff; color: #000000; border: 1px solid #000000;">Save Recording</button>
-            <button class="record-button" id="load-recording" style="background-color: #ffffff; color: #000000; border: 1px solid #000000;">Load Recording</button>
-            <button class="record-button" id="clear-recording" disabled style="background-color: #ffffff; color: #000000; border: 1px solid #000000;">Clear Recording</button>
-            <audio id="audio-playback" controls></audio>
-            <div id="volume-bar">
-                <div id="volume-level"></div>
-            </div>
-        </div>
-        <div class="call-notes-container">
-            <label for="call-notes">Call Notes</label>
-            <textarea id="call-notes"></textarea>
-            <button onclick="copyCallNotes()">Copy</button>
-            <button onclick="clearCallNotes()">Clear</button>
-            <button onclick="timestampCallNotes()">Timestamp</button>
-        </div>
-        <div class="counter-container">
-            <div class="counter">
-                <p>Answers</p>
-                <p id="answers-count">0</p>
-                <button class="counter-button" onclick="incrementCounter('answers-count')">Up</button>
-                <button class="counter-button" onclick="decrementCounter('answers-count')">Down</button>
-                <button class="counter-button" onclick="resetCounter('answers-count')">Reset</button>
-            </div>
-            <div class="counter">
-                <p>Sets</p>
-                <p id="sets-count">0</p>
-                <button class="counter-button" onclick="incrementCounter('sets-count')">Up</button>
-                <button class="counter-button" onclick="decrementCounter('sets-count')">Down</button>
-                <button class="counter-button" onclick="resetCounter('sets-count')">Reset</button>
-            </div>
-        </div>
         <button class="toggle-button" onclick="toggleScript()">Toggle Script</button>
         <div class="script-container" id="script-container">
             <div class="script-section">
@@ -546,6 +510,7 @@
                 </div>
             </div>
         </div>
+
         <div class="questions-container">
             <div class="group-container group-deposit">
                 <div class="group-header">Deposits</div>
@@ -723,6 +688,43 @@
                     <p>Materials - Zirconia Titanium ceramic etc</p>
                     <p>We don’t talk about clinical questions</p>
                 </div>
+            </div>
+        </div>
+
+        <div class="record-container">
+            <button class="record-button" id="start-recording" style="background-color: #ffffff; color: #000000; border: 1px solid #000000;">Start Recording</button>
+            <button class="record-button" id="stop-recording" disabled style="background-color: #ffffff; color: #000000; border: 1px solid #000000;">Stop Recording</button>
+            <button class="record-button" id="save-recording" disabled style="background-color: #ffffff; color: #000000; border: 1px solid #000000;">Save Recording</button>
+            <button class="record-button" id="load-recording" style="background-color: #ffffff; color: #000000; border: 1px solid #000000;">Load Recording</button>
+            <button class="record-button" id="clear-recording" disabled style="background-color: #ffffff; color: #000000; border: 1px solid #000000;">Clear Recording</button>
+            <audio id="audio-playback" controls></audio>
+            <div id="volume-bar">
+                <div id="volume-level"></div>
+            </div>
+        </div>
+
+        <div class="call-notes-container">
+            <label for="call-notes">Call Notes</label>
+            <textarea id="call-notes"></textarea>
+            <button onclick="copyCallNotes()">Copy</button>
+            <button onclick="clearCallNotes()">Clear</button>
+            <button onclick="timestampCallNotes()">Timestamp</button>
+        </div>
+
+        <div class="counter-container">
+            <div class="counter">
+                <p>Answers</p>
+                <p id="answers-count">0</p>
+                <button class="counter-button" onclick="incrementCounter('answers-count')">Up</button>
+                <button class="counter-button" onclick="decrementCounter('answers-count')">Down</button>
+                <button class="counter-button" onclick="resetCounter('answers-count')">Reset</button>
+            </div>
+            <div class="counter">
+                <p>Sets</p>
+                <p id="sets-count">0</p>
+                <button class="counter-button" onclick="incrementCounter('sets-count')">Up</button>
+                <button class="counter-button" onclick="decrementCounter('sets-count')">Down</button>
+                <button class="counter-button" onclick="resetCounter('sets-count')">Reset</button>
             </div>
         </div>
     </div>
