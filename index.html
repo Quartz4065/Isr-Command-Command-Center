@@ -341,26 +341,42 @@
             top: 10px;
             right: 10px;
             background-color: var(--script-bg);
-            color: var(--text-color);
+            color: black;
             padding: 10px;
             border-radius: 10px;
             z-index: 1000;
+            display: none;
         }
 
         .customization-panel label {
             display: block;
             margin-bottom: 5px;
+            color: black;
         }
 
         .customization-panel input {
             margin-bottom: 10px;
             display: block;
         }
+
+        .customization-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: var(--toggle-button-bg);
+            color: var(--toggle-button-color);
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            border: none;
+        }
     </style>
 </head>
 <body>
     <div id="datetime"></div>
-    <div class="customization-panel">
+    <button class="customization-toggle" onclick="toggleCustomizationPanel()">Customize Colors</button>
+    <div class="customization-panel" id="customization-panel">
         <h3>Customize Colors</h3>
         <label for="background-color">Background:</label>
         <input type="color" id="background-color" value="#121212">
@@ -904,6 +920,15 @@
             root.style.setProperty('--active-question-box-bg', activeQuestionBoxBg);
             root.style.setProperty('--answer-bg', answerBg);
             // Update other properties similarly
+        }
+
+        function toggleCustomizationPanel() {
+            const panel = document.getElementById('customization-panel');
+            if (panel.style.display === 'none' || panel.style.display === '') {
+                panel.style.display = 'block';
+            } else {
+                panel.style.display = 'none';
+            }
         }
     </script>
 </body>
