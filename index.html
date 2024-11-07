@@ -650,6 +650,10 @@
             </div>
             <div class="group-container group-callback">
                 <div class="group-header">Callbacks</div>
+                <div class="question-box" onclick="toggleAnswer('answer28')">Trying to Schedule Weeks Out</div>
+                <div id="answer28" class="answer" onclick="toggleAnswer('answer28')">
+                    <p>“Hey, I know that arranging calendars can be difficult and you mentioned how much this is affecting your life, so I want to reserve this voucher for you and it would need to be redeemed by _______________. I can do that by just putting you on the calendar for a date you think works best, and if an emergency comes up we're happy to accommodate. Looking back at our calendar, do mornings or afternoons work better for you?”</p>
+                </div>
                 <div class="question-box" onclick="toggleAnswer('answer6')">Call Back - Beginning of the call/Busy (Pre Discovery)</div>
                 <div id="answer6" class="answer" onclick="toggleAnswer('answer6')">
                     <p>“I can call you back but I'm not sure we can even help you. Tell me real quick how many teeth are you missing?”</p>
@@ -711,7 +715,26 @@
                     <p>“May I ask what’s holding you back from coming into a complimentary consultation to get the answers you are looking for?” (redirect back to flow)</p>
                 </div>
             </div>
-            <div class="group-container group-location">
+            <div class="group-container group-general">
+                <div class="group-header">General Rules</div>
+                <div class="question-box" onclick="toggleAnswer('answer26')">Red Flags</div>
+                <div id="answer26" class="answer" onclick="toggleAnswer('answer26')">
+                    <!-- [Red Flags content remains unchanged] -->
+                </div>
+                <div class="question-box" onclick="toggleAnswer('answer27')">DO NOT SAY DO NOT DO LIST</div>
+                <div id="answer27" class="answer" onclick="toggleAnswer('answer27')">
+                    <!-- [DO NOT SAY DO NOT DO LIST content remains unchanged] -->
+                </div>
+                <div class="question-box" onclick="toggleAnswer('answer19')">Rebuttal Framework</div>
+                <div id="answer19" class="answer" onclick="toggleAnswer('answer19')">
+                    <p>“Step 1: Option Statement"</p>
+                    <p>"[name] I have seen this procedure change lives and so I just want to ask honestly, is it the [instert objection] or is there something else holding you back?”</p>
+                    <p>Step 2: Circle Back TO The Why/ Challange Objection</p>
+                    <p>"Earlier on you explained to me that you were [insert their why]. The consultation is the first step to solving the issues you are currently facing, and I don't want [OBJECTION] to stop you from potentially changing your life. The deposit is just there to make sure everyone shows up for the consultation because we are very busy. Once you come in, we refund it right back to you. We can even do that on a credit card, whichever one works best for you."</p>    
+                </div>
+            </div>
+
+<div class="group-container group-location">
                 <div class="group-header">Location</div>
                 <div class="question-box" onclick="toggleAnswer('answer17')">Where are you located?</div>
                 <div id="answer17" class="answer" onclick="toggleAnswer('answer17')">
